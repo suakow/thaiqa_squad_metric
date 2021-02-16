@@ -19,9 +19,6 @@ def normalize_answer(s):
     def remove_articles(text):
         return re.sub(r"\b(a|an|the)\b", " ", text)
 
-    def white_space_fix(text):
-        return " ".join(text.split())
-
     def remove_punc(text):
         exclude = set(string.punctuation)
         return "".join(ch for ch in text if ch not in exclude)
@@ -29,14 +26,14 @@ def normalize_answer(s):
     def lower(text):
         return text.lower()
 
-    return white_space_fix(remove_articles(remove_punc(lower(s))))
+    return normalize(remove_punc(lower(s))).replace('\xa0', ' ')
 
 
 def f1_score(prediction, ground_truth):
     # prediction_tokens = normalize_answer(prediction).split()
     # ground_truth_tokens = normalize_answer(ground_truth).split()
-    prediction_tokens = tokenize(normalize(prediction))
-    ground_truth_tokens = tokenize(normalize(ground_truth))
+    prediction_tokens = tokenize(normalize_answer(prediction))
+    ground_truth_tokens = tokenize(normalize_answer(ground_truth))
 
     common = Counter(prediction_tokens) & Counter(ground_truth_tokens)
     num_same = sum(common.values())

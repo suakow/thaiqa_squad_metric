@@ -13,11 +13,23 @@ from pythainlp.util import normalize
 from collections import Counter
 
 
+# def normalize_answer(s):
+#     """Lower text and remove punctuation, articles and extra whitespace."""
+
+#     def remove_articles(text):
+#         return re.sub(r"\b(a|an|the)\b", " ", text)
+
+#     def remove_punc(text):
+#         exclude = set(string.punctuation)
+#         return "".join(ch for ch in text if ch not in exclude)
+
+#     def lower(text):
+#         return text.lower()
+
+#     return normalize(remove_punc(lower(s))).replace('\xa0', ' ')
+
 def normalize_answer(s):
     """Lower text and remove punctuation, articles and extra whitespace."""
-
-    def remove_articles(text):
-        return re.sub(r"\b(a|an|the)\b", " ", text)
 
     def remove_punc(text):
         exclude = set(string.punctuation)
@@ -26,7 +38,7 @@ def normalize_answer(s):
     def lower(text):
         return text.lower()
 
-    return normalize(remove_punc(lower(s))).replace('\xa0', ' ')
+    return normalize(remove_punc(lower(s.strip()))).replace('\xa0', ' ')
 
 
 def f1_score(prediction, ground_truth):

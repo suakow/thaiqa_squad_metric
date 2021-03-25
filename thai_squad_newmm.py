@@ -16,7 +16,7 @@
 
 import datasets
 
-from .evaluate import evaluate
+from .evaluate_newmm import evaluate
 
 
 _CITATION = """\
@@ -63,7 +63,7 @@ Examples:
 
 
 @datasets.utils.file_utils.add_start_docstrings(_DESCRIPTION, _KWARGS_DESCRIPTION)
-class ThaiSquad(datasets.Metric):
+class ThaiSquadNewmm(datasets.Metric):
     def _info(self):
         return datasets.MetricInfo(
             description=_DESCRIPTION,

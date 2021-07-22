@@ -19,7 +19,7 @@ _-_-_-_-_-_-_-|   /\_/\
 _-_-_-_-_-_-_-""  ""
 +      o         o   +       o
     +         +
-o      o  _-_-_-_- Thai QA Metric - Word level by Newmm Tokenizer
+o      o  _-_-_-_- Thai QA Metric - Word level by Syllable Tokenizer
     o           +
 +      +     o        o      +
 """
@@ -31,7 +31,7 @@ import re
 import string
 import sys
 
-from pythainlp.tokenize import word_tokenize
+from pythainlp.tokenize import syllable_tokenize
 from pythainlp.util import normalize
 
 from collections import Counter
@@ -68,8 +68,8 @@ def normalize_answer(s):
 def f1_score(prediction, ground_truth):
     # prediction_tokens = normalize_answer(prediction).split()
     # ground_truth_tokens = normalize_answer(ground_truth).split()
-    prediction_tokens = word_tokenize(normalize_answer(prediction), engine='newmm')
-    ground_truth_tokens = word_tokenize(normalize_answer(ground_truth), engine='newmm')
+    prediction_tokens = syllable_tokenize(normalize_answer(prediction), keep_whitespace=False)
+    ground_truth_tokens = syllable_tokenize(normalize_answer(ground_truth), keep_whitespace=False)
 
     common = Counter(prediction_tokens) & Counter(ground_truth_tokens)
     num_same = sum(common.values())

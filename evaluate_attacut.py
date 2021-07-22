@@ -1,4 +1,5 @@
 """ Edit from Official evaluation script for v1.1 of the SQuAD dataset. """
+from __future__ import print_function
 
 __author__ = "Puri Phakmongkol"
 __author_email__ = "me@puri.in.th"
@@ -23,8 +24,6 @@ o      o  _-_-_-_- Thai QA Metric - Word level by Attacut Tokenizer
     o           +
 +      +     o        o      +
 """
-
-from __future__ import print_function
 
 import argparse
 import json

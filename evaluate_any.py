@@ -31,7 +31,6 @@ import re
 import string
 import sys
 
-from attacut import tokenize
 from pythainlp.util import normalize
 
 from collections import Counter
